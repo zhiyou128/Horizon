@@ -1,104 +1,40 @@
 {
   "version": "1.0",
   "ai": {
-    "provider": "openai",
-    "model": "deepseek-chat",
-    "base_url": "https://api.deepseek.com",
-    "api_key_env": "OPENAI_API_KEY",
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-20250514",
+    "api_key_env": "ANTHROPIC_API_KEY",
     "temperature": 0.3,
     "max_tokens": 8192,
-    "languages": [
-      "zh",
-      "en"
-    ]
+    "languages": ["zh", "en"]
   },
   "sources": {
     "github": [
-      {
-        "type": "user_events",
-        "username": "karpathy",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "vllm-project",
-        "repo": "vllm",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "sgl-project",
-        "repo": "sglang",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "triton-lang",
-        "repo": "triton",
-        "enabled": true
-      }
+      {"type": "user_events", "username": "karpathy", "enabled": true},
+      {"type": "repo_releases", "owner": "anthropic", "repo": "claude-code", "enabled": true},
+      {"type": "repo_releases", "owner": "vllm-project", "repo": "vllm", "enabled": true},
+      {"type": "repo_releases", "owner": "sgl-project", "repo": "sglang", "enabled": true},
+      {"type": "repo_releases", "owner": "deepseek-ai", "repo": "deepseek-chat", "enabled": true}
     ],
-    "hackernews": {
-      "enabled": true,
-      "fetch_top_stories": 10,
-      "min_score": 200
-    },
+    "hackernews": {"enabled": true, "fetch_top_stories": 10, "min_score": 200},
     "rss": [
-      {
-        "name": "Simon Willison",
-        "url": "https://simonwillison.net/atom/everything/",
-        "enabled": true,
-        "category": "ai-tools"
-      },
-      {
-        "name": "GitHub Trending - Daily",
-        "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
-        "enabled": true,
-        "category": "github-trending"
-      },
-      {
-        "name": "LWN.net",
-        "url": "https://lwn.net/headlines/full_text?key=${LWN_KEY}",
-        "enabled": true,
-        "category": "linux-kernel"
-      }
+      {"name": "机器之心", "url": "https://jiqizhixin.com/rss", "enabled": true, "category": "ai-news-zh"},
+      {"name": "量子位", "url": "https://www.qbitai.com/feed", "enabled": true, "category": "ai-news-zh"},
+      {"name": "36氪", "url": "https://36kr.com/feed", "enabled": true, "category": "tech-news-zh"},
+      {"name": "数字生命卡兹克", "url": "https://rsshub.app/wechat/rss/gh_5e3d4a2b9c2a", "enabled": true, "category": "ai-opinion"},
+      {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "enabled": true, "category": "ai-tools"},
+      {"name": "GitHub Trending", "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml", "enabled": true, "category": "github-trending"}
     ],
     "reddit": {
       "enabled": true,
       "subreddits": [
-        {
-          "subreddit": "MachineLearning",
-          "enabled": true,
-          "sort": "hot",
-          "time_filter": "day",
-          "fetch_limit": 15,
-          "min_score": 60
-        },
-        {
-          "subreddit": "LocalLLaMA",
-          "enabled": true,
-          "sort": "hot",
-          "time_filter": "day",
-          "fetch_limit": 15,
-          "min_score": 60
-        }
+        {"subreddit": "MachineLearning", "enabled": true, "sort": "hot", "time_filter": "day", "fetch_limit": 15, "min_score": 60},
+        {"subreddit": "LocalLLaMA", "enabled": true, "sort": "hot", "time_filter": "day", "fetch_limit": 15, "min_score": 60},
+        {"subreddit": "artificial", "enabled": true, "sort": "hot", "time_filter": "day", "fetch_limit": 10, "min_score": 50}
       ],
       "users": [],
       "fetch_comments": 10
-    },
-    "telegram": {
-      "enabled": true,
-      "channels": [
-        {
-          "channel": "zaihuapd",
-          "enabled": true,
-          "fetch_limit": 20
-        }
-      ]
     }
   },
-  "filtering": {
-    "ai_score_threshold": 7.0,
-    "time_window_hours": 24
-  }
+  "filtering": {"ai_score_threshold": 6.0, "time_window_hours": 24}
 }
